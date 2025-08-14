@@ -1,30 +1,337 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Dragon's Flask</title>
-    <link href="/The Dragons Flask/src/output.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Dragon's Flask</title>
+  <link href="/The Dragons Flask/src/output.css" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="/The Dragons Flask/favicon.ico" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
+
+  
 </head>
+
+<style>
+  body {
+    font-family: 'Cinzel Decorative', serif;
+  }
+  @keyframes gradient-x {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+  }
+  .animate-gradient-x {
+    background-size: 200% 200%;
+    animation: gradient-x 3s linear infinite alternate;
+  }
+
+  .join-guild-section {
+  background-image: url('/The\ Dragons\ Flask/build/img/guild.jpg');
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+}
+
+
+
+.flip-card-container { perspective: 1000px; }
+.flip-card-inner { transform-style: preserve-3d; transition: transform 0.6s; }
+.flip-card-front, .flip-card-back { backface-visibility: hidden; position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.flip-card-back { transform: rotateY(180deg); }
+.flip-card-inner.flipped { transform: rotateY(180deg); }
+</style>
 
 <body class="min-h-screen bg-slate-50 dark:bg-black dark:text-white">
 
-<header class="min-h-screen flex flex-col justify-center items-center text-center bg-gray-800">
-    <img src="/The Dragons Flask/build/img/dragonbeer.png" alt="Dragon Mascot" class="w-60 h-48 mb-6">
+  <header class="bg-gray-900 text-white fixed w-full top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+      
+      <div class="text-2xl font-bold text-yellow-400">
+        The Dragon’s Flask
+      </div>
 
-    <!-- Başlık -->
-    <h1 class="text-5xl md:text-7xl font-bold mb-4 text-yellow-400">Enter the Tavern of Legends!</h1>
+      <!-- Hamburger Menu Button -->
+      <button id="menu-btn" class="md:hidden text-3xl focus:outline-none">
+        &#9776;
+      </button>
 
-    <!-- Alt metin -->
-    <p class="text-xl md:text-2xl mb-6 text-gray-200">Epic adventures, mystical drinks, legendary tales.</p>
+      <!-- Navigation Items -->
+      <nav id="menu" class="hidden md:flex gap-6">
+        <ul class="flex flex-col md:flex-row md:gap-6">
+          <li><a href="#hero" class="hover:text-yellow-400 transition-colors">Home</a></li>
+          <li><a href="#elixirs" class="hover:text-yellow-400 transition-colors">Our Elixirs</a></li>
+          <li><a href="#tales" class="hover:text-yellow-400 transition-colors">Adventurers’ Tales</a></li>
+          <li><a href="#about" class="hover:text-yellow-400 transition-colors">About</a></li>
+          <li><a href="#contact" class="hover:text-yellow-400 transition-colors">Join the Guild</a></li>
+        </ul>
+      </nav>
 
-    <!-- Buton -->
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="min-h-screen flex flex-col justify-center items-center text-center bg-gray-800 pt-20">
+    <img src="/The Dragons Flask/build/img/dragonbeer.png" alt="Dragon Mascot" class="w-auto h-auto mb-6">
+
+
+    <h1 class="text-5xl md:text-7xl font-bold mb-4 text-yellow-400">
+        Enter the 
+        <span class="bg-gradient-to-r from-purple-800 via-purple-500 to-pink-400 bg-clip-text text-transparent animate-gradient-x">
+        Tavern of Legends
+        </span>!
+    </h1>
+
+
+    <p class="text-xl md:text-2xl mb-6 text-gray-200">
+      Epic adventures, mystical drinks, legendary tales.
+    </p>
     <button class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-6 rounded shadow-lg">
-        Join the Adventure
+      Join the Adventure
     </button>
-</header>
+  </section>
 
-    
+<section id="elixirs" class="p-6 bg-gray-900 text-white text-center">
+  <h2 class="text-4xl font-bold mb-8 text-yellow-400">Our Elixirs</h2>
+  <ul class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto list-none p-0">
+
+    <!-- Healing Elixir -->
+
+<li class="flip-card-container w-64 h-64 aspect-square relative cursor-pointer mx-auto">
+  <div class="flip-card-inner w-full h-full transition-transform duration-500 transform-style-preserve-3d relative">
+    <div class="flip-card-front absolute w-full h-full bg-gray-800 rounded-lg shadow-lg flex flex-col items-center justify-center p-4 backface-hidden">
+      <img src="/The Dragons Flask/build/img/heal.png" class="w-auto h-auto mb-2" alt="">
+      <h3 class="text-red-400 font-semibold text-lg text-center">Healing Elixir</h3>
+      <p class="text-gray-300 text-sm text-center">Restores a small amount of health instantly.</p>
+      <p class="text-yellow-300 font-bold text-sm mb-2">🪙 20 Gold</p>
+    </div>
+    <div class="flip-card-back absolute w-full h-full bg-gray-700 rounded-lg flex items-center justify-center p-4 backface-hidden rotate-y-180">
+      <p class="text-gray-200 text-center text-sm">
+        This elixir is distilled from the tears of legendary water nymphs. Rapidly <span class="text-red-400 font-bold">heals wounds</span> and neutralizes minor poisons.
+      </p>
+    </div>
+  </div>
+</li>
+
+<!-- Mana Potion -->
+
+<li class="flip-card-container w-64 h-64 aspect-square relative cursor-pointer mx-auto">
+  <div class="flip-card-inner w-full h-full transition-transform duration-500 transform-style-preserve-3d relative">
+    <div class="flip-card-front absolute w-full h-full bg-gray-800 rounded-lg shadow-lg flex flex-col items-center justify-center p-4 backface-hidden">
+      <img src="/The Dragons Flask/build/img/mana.png" class="w-auto h-auto mb-2" alt="">
+      <h3 class="text-blue-500 font-semibold text-lg text-center">Mana Potion</h3>
+      <p class="text-gray-300 text-sm text-center">Replenishes a portion of your magical energy.</p>
+      <p class="text-yellow-300 font-bold text-sm mb-2">🪙 30 Gold</p>
+    </div>
+    <div class="flip-card-back absolute w-full h-full bg-gray-700 rounded-lg flex items-center justify-center p-4 backface-hidden rotate-y-180">
+      <p class="text-gray-200 text-center text-sm">
+        Made from magical mushrooms under moonlight, this potion instantly restores <span class="text-blue-500 font-bold">mana</span> for your spells.
+      </p>
+    </div>
+  </div>
+</li>
+
+<!-- Dragon's Breath Elixir -->
+
+<li class="flip-card-container w-64 h-64 after aspect-square relative cursor-pointer mx-auto">
+  <div class="flip-card-inner w-full h-full transition-transform duration-500 transform-style-preserve-3d relative">
+    <div class="flip-card-front absolute w-full h-full bg-gray-800 rounded-lg shadow-lg flex flex-col items-center justify-center p-4 backface-hidden">
+      <img src="/The Dragons Flask/build/img/dragon.png" class="w-auto h-auto mb-2" alt="">
+      <h3 class="text-orange-400 font-semibold text-lg text-center">Dragon's Breath Elixir</h3>
+      <p class="text-gray-300 text-sm text-center">Increases all stats for a duration.</p>
+      <p class="text-yellow-300 font-bold text-sm mb-2">🪙 50 Gold</p>
+    </div>
+    <div class="flip-card-back absolute w-full h-full bg-gray-700 rounded-lg flex items-center justify-center p-4 backface-hidden rotate-y-180">
+      <p class="text-gray-200 text-center text-sm">
+        Infused with <span class="text-orange-400 font-bold">dragon fire essence</span>, this elixir grants the drinker a temporary burst of fiery power.
+      </p>
+    </div>
+  </div>
+</li>
+
+<!-- Frostbite Tonic -->
+
+<li class="flip-card-container w-64 h-64 after aspect-square relative cursor-pointer mx-auto">
+  <div class="flip-card-inner w-full h-full transition-transform duration-500 transform-style-preserve-3d relative">
+    <div class="flip-card-front absolute w-full h-full bg-gray-800 rounded-lg shadow-lg flex flex-col items-center justify-center p-4 backface-hidden">
+      <img src="/The Dragons Flask/build/img/frost.png" class="w-auto h-auto mb-2" alt="Frostbite Tonic">
+      <h3 class="text-blue-300 font-semibold text-lg text-center">Frostbite Tonic</h3>
+      <p class="text-gray-300 text-sm text-center">Chills your foes to the bone with a single sip.</p>
+      <p class="text-yellow-300 font-bold text-sm mb-2">🪙 45 Gold</p>
+    </div>
+    <div class="flip-card-back absolute w-full h-full bg-gray-700 rounded-lg flex items-center justify-center p-4 backface-hidden rotate-y-180">
+      <p class="text-gray-200 text-center text-sm">
+        An icy concoction brewed in the frozen peaks, this tonic releases a <span class="text-blue-300 font-bold">bone-piercing cold</span> upon impact. Each drop carries the essence of eternal winter, slowing enemies and encasing them in frost.
+      </p>
+    </div>
+  </div>
+</li>
+
+<!-- Shadowstep Brew -->
+
+<li class="flip-card-container w-64 h-64 after aspect-square relative cursor-pointer mx-auto">
+  <div class="flip-card-inner w-full h-full transition-transform duration-500 transform-style-preserve-3d relative">
+    <div class="flip-card-front absolute w-full h-full bg-gray-800 rounded-lg shadow-lg flex flex-col items-center justify-center p-4 backface-hidden">
+      <img src="/The Dragons Flask/build/img/sneak.png" class="w-auto h-auto mb-2" alt="">
+      <h3 class="text-purple-800 font-semibold text-lg text-center">Shadowstep Brew</h3>
+      <p class="text-gray-300 text-sm text-center">Slip into the shadows and vanish from sight.</p>
+      <p class="text-yellow-300 font-bold text-sm mb-2">🪙 60 Gold</p>
+    </div>
+    <div class="flip-card-back absolute w-full h-full bg-gray-700 rounded-lg flex items-center justify-center p-4 backface-hidden rotate-y-180">
+      <p class="text-gray-200 text-center text-sm">
+        Distilled from moonlit dew and whispering wraith petals, this brew allows the drinker to meld seamlessly into the <span class="text-purple-800 font-bold">darkness</span>. Perfect for assassins, rogues and anyone who prefes their business... unseen.
+      </p>
+    </div>
+  </div>
+</li>
+
+<!-- Thunderstrike Elixir -->
+
+<li class="flip-card-container w-64 h-64 after aspect-square relative cursor-pointer mx-auto">
+  <div class="flip-card-inner w-full h-full transition-transform duration-500 transform-style-preserve-3d relative">
+    <div class="flip-card-front absolute w-full h-full bg-gray-800 rounded-lg shadow-lg flex flex-col items-center justify-center p-4 backface-hidden">
+      <img src="/The Dragons Flask/build/img/thunder.png" class="w-auto h-auto mb-2" alt="">
+      <h3 class="text-yellow-400 font-semibold text-lg text-center">Thunderstrike Elixir</h3>
+      <p class="text-gray-300 text-sm text-center">Unleash the storm within.</p>
+      <p class="text-yellow-300 font-bold text-sm mb-2">🪙 55 Gold</p>
+    </div>
+    <div class="flip-card-back absolute w-full h-full bg-gray-700 rounded-lg flex items-center justify-center p-4 backface-hidden rotate-y-180">
+      <p class="text-gray-200 text-center text-sm">
+        Infused with raw lightning captured during a midnight tempest, this elixir crackles with volatile energy. One test sends <span class="text-yellow-400 font-bold">electric power</span> surging through your veins, striking enemies with the fury of skies.
+      </p>
+    </div>
+  </div>
+</li>
+
+  </ul>
+</section>
+
+
+
+<!-- Adventurers’ Tales Section -->
+<section id="tales" class="py-16 bg-gray-800 text-white text-center">
+    <h2 class="text-4xl font-bold mb-8 text-yellow-400">Adventurers’ Tales</h2>
+    <ul class="space-y-12">
+        <li class="flex flex-col md:flex-row items-center md:items-start gap-6">
+            <div class="p-6 rounded-lg flex-1 flex flex-col md:flex-row items-center gap-6" style="background: linear-gradient(to bottom right, #bbdcdf, #bbdcdf);">
+                <div class="w-48 h-48 bg-gradient-to-br from-blue-400 to-cyan-600 rounded-lg flex-shrink-0">
+                    <img src="/The Dragons Flask/build/img/mage.jpg" alt="Mage" class="w-48 h-48 object-cover rounded-lg">
+                </div>
+                <div class="flex-1">
+                    <p class="italic text-gray-900 text-left">
+                        "After an intense duel in the Shadowed Glade where my magic spiraled out of control, I barely escaped with my life. Exhausted and shaken, I stumbled into the Dragon’s Flask. The warmth of the tavern and a sip of their enchanted ale restored my focus and strength, letting me gather my thoughts for the challenges ahead."
+                    </p>
+                    <span class="block mt-4 text-blue-800 font-bold text-right">~ Kaelen Nightshade</span>
+                </div>
+            </div>
+        </li>
+
+        <li class="flex flex-col md:flex-row-reverse items-center md:items-start gap-6">
+            <div class="p-6 rounded-lg flex-1 flex flex-col md:flex-row-reverse items-center gap-6" style="background: linear-gradient(to bottom right, #1f1523, #402944);">
+                <div class="w-48 h-48 bg-gradient-to-br from-purple-300 via-purple-500 to-purple-700 rounded-lg flex-shrink-0">
+                    <img src="/The Dragons Flask/build/img/elf.jpg" alt="Lyra Moonshade" class="w-48 h-48 object-cover rounded-lg">
+                </div>
+                <div class="flex-1">
+                    <p class="italic text-gray-200 text-left">
+                        "I wandered through the Whispering Woods, lost and alone, until the Dragon’s Flask appeared like a beacon. Here, I found companions who understood my visions and stories, and the magical wines revived my spirit."
+                    </p>
+                    <span class="block mt-4 text-purple-400 font-bold text-right">~ Lyra Moonshadow</span>
+                </div>
+            </div>
+        </li>
+
+        <li class="flex flex-col md:flex-row items-center md:items-start gap-6">
+            <div class="p-6 rounded-lg flex-1 flex flex-col md:flex-row items-center gap-6" style="background: linear-gradient(to bottom right, #bdc3a6, #5d6b45);">
+                <div class="w-48 h-48 bg-gradient-to-br from-green-700 via-brown-600 to-green-500 rounded-lg flex-shrink-0">
+                    <img src="/The Dragons Flask/build/img/orc.jpg" alt="Gruk Stonefist" class="w-48 h-48 object-cover rounded-lg">
+                </div>
+                <div class="flex-1">
+                    <p class="italic text-gray-900 text-left">
+                        "The battlefield was a mess of mud and blood, and I was weary from countless battles. At the Dragon’s Flask, I found a haven where I could relax, share stories of glory, and drink the strongest brews in the realm."
+                    </p>
+                    <span class="block mt-4 text-green-400 font-bold text-right">~ Gruk Stonefist</span>
+                </div>
+            </div>
+        </li>
+    </ul>
+</section>
+
+
+
+
+
+
+<!-- Join the Guild Section -->
+<section class="py-16 bg-gray-900 text-center">
+  <h2 class="text-4xl font-bold mb-4 text-yellow-400">Join the Guild</h2>
+  <p class="mb-6 text-yellow-200 text-lg">Become part of our legendary community.</p>
+  <form class="max-w-md mx-auto flex flex-col sm:flex-row gap-4">
+    <input 
+      type="text" 
+      placeholder="Enter your hero name" 
+      class="flex-1 p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-yellow-400 border border-yellow-500 shadow-lg"
+    />
+<button 
+  type="submit" 
+  class="bg-yellow-400 text-black px-6 py-3 rounded-lg font-bold hover:bg-yellow-300 transition shadow-lg border border-yellow-600">
+  Join ⚔️
+</button>
+
+  </form>
+</section>
+
+
+<footer class="bg-gray-900 text-white py-12 relative overflow-hidden">
+  <!-- Dekoratif yıldızlar / ejderha simgesi arka plan -->
+  <div class="absolute inset-0 bg-[url('/assets/footer-bg.png')] bg-cover bg-center opacity-20 pointer-events-none"></div>
+
+  <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+    <div class="flex flex-col items-center md:items-start">
+      <h3 class="text-yellow-400 text-2xl font-bold mb-2">The Dragon’s Flask</h3>
+      <p class="text-gray-300 italic max-w-sm text-center md:text-left">
+        "Where adventurers rest, tales are told, and legends are born."
+      </p>
+    </div>
+
+    <div class="flex flex-col md:items-end gap-4">
+      <p class="text-gray-400">Follow our quests:</p>
+      <div class="flex gap-4">
+        <a href="#" class="text-yellow-400 hover:text-yellow-300 transition">🐲</a>
+        <a href="#" class="text-yellow-400 hover:text-yellow-300 transition">⚔️</a>
+        <a href="#" class="text-yellow-400 hover:text-yellow-300 transition">🧪</a>
+      </div>
+
+      <form class="flex gap-2 mt-2">
+        <input type="email" placeholder="Join our newsletter" class="p-2 rounded-lg text-black flex-1">
+        <button class="bg-yellow-400 hover:bg-yellow-300 text-black px-4 py-2 rounded-lg font-bold transition shadow-lg">
+          Join
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <p class="text-gray-500 text-center mt-8 text-sm">
+    © 2025 Dragon’s Flask. All adventures reserved.
+  </p>
+</footer>
+
+
+
+
+
+  <script>
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('menu');
+
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('.flip-card-container').forEach(card => {
+  card.addEventListener('click', () => {
+    card.querySelector('.flip-card-inner').classList.toggle('flipped');
+  });
+});
+  </script>
+
 </body>
-
 </html>
